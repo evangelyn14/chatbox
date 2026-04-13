@@ -1,6 +1,7 @@
 import string
 import unicodedata
 
+
 base_conocimiento = {
   "señales": [
     {
@@ -13,7 +14,7 @@ base_conocimiento = {
     },
     {
       "patterns": ["señales de tránsito", "tipos de señales", "señales viales", "clasificación de señales"],
-      "answer": "Las señales de tránsito pueden ser reglamentarias, preventivas e informativas. Cada una cumple la función de regular, advertir o informar a los usuarios de la vía."
+      "answer": "Las señales de tránsito pueden ser reglamentarias, preventivas e informativas."
     }
   ],
   "prioridad": [
@@ -23,102 +24,87 @@ base_conocimiento = {
     },
     {
       "patterns": ["paso peatonal", "prioridad peatón", "peatón cruza", "reglas peatón"],
-      "answer": "El conductor debe reducir la velocidad y detenerse si es necesario para permitir el paso seguro de los peatones."
+      "answer": "Debes reducir la velocidad y detenerte para permitir el paso seguro de los peatones."
     },
     {
       "patterns": ["intersección sin señales", "quién tiene prioridad", "cruce sin semáforo", "derecho de vía"],
-      "answer": "En una intersección sin señalización, tiene prioridad el vehículo que viene por la derecha."
+      "answer": "Tiene prioridad el vehículo que viene por la derecha."
     }
   ],
   "circulacion": [
     {
       "patterns": ["reglas de tránsito", "normas de circulación", "cómo conducir", "reglas básicas"],
-      "answer": "Debes conducir por el lado derecho de la vía, respetar señales y semáforos, y mantener una conducta responsable en todo momento."
+      "answer": "Debes conducir por el lado derecho, respetar señales y actuar con responsabilidad."
     },
     {
-      "patterns": ["uso del cinturón", "cinturón obligatorio", "seguridad en el carro", "protección conductor"],
-      "answer": "El uso del cinturón de seguridad es obligatorio para todos los ocupantes del vehículo y reduce el riesgo de lesiones graves."
+      "patterns": ["uso del cinturón", "cinturón obligatorio", "seguridad en el carro"],
+      "answer": "El cinturón de seguridad es obligatorio para todos los ocupantes."
     },
     {
-      "patterns": ["uso del celular", "puedo usar celular manejando", "distracciones al conducir", "hablar por teléfono"],
-      "answer": "No se debe usar el celular mientras se conduce, ya que distrae y aumenta significativamente el riesgo de accidentes."
+      "patterns": ["uso del celular", "puedo usar celular manejando", "distracciones al conducir"],
+      "answer": "No debes usar el celular mientras conduces."
     }
   ],
   "velocidad": [
     {
-      "patterns": ["límite de velocidad", "velocidad máxima", "cuánto es permitido", "velocidad en carretera"],
-      "answer": "Los límites de velocidad dependen de la vía, pero generalmente son de 40 a 60 km/h en zonas urbanas y hasta 90 o 100 km/h en autopistas."
+      "patterns": ["límite de velocidad", "velocidad máxima", "velocidad en carretera"],
+      "answer": "Generalmente 40-60 km/h en ciudad y hasta 90-100 km/h en autopistas."
     },
     {
-      "patterns": ["exceso de velocidad", "qué pasa si voy rápido", "multa velocidad", "riesgo por velocidad"],
-      "answer": "Exceder los límites de velocidad aumenta el riesgo de accidentes y puede resultar en multas y sanciones."
+      "patterns": ["exceso de velocidad", "multa velocidad", "riesgo por velocidad"],
+      "answer": "Aumenta el riesgo de accidentes y genera sanciones."
     },
     {
-      "patterns": ["velocidad en lluvia", "manejar con lluvia", "ajustar velocidad", "clima y conducción"],
-      "answer": "Debes reducir la velocidad cuando hay lluvia o poca visibilidad para mantener el control del vehículo."
+      "patterns": ["velocidad en lluvia", "manejar con lluvia"],
+      "answer": "Debes reducir la velocidad por seguridad."
     }
   ],
   "defensiva": [
     {
-      "patterns": ["conducción defensiva", "manejo seguro", "qué es manejo defensivo", "cómo evitar accidentes"],
-      "answer": "La conducción defensiva consiste en anticiparse a los riesgos y actuar con precaución para evitar accidentes."
+      "patterns": ["conducción defensiva", "manejo seguro"],
+      "answer": "Consiste en anticiparse a los riesgos y conducir con precaución."
     },
     {
-      "patterns": ["distancia de seguridad", "qué tan cerca manejar", "espacio entre carros", "seguir vehículo"],
-      "answer": "Debes mantener una distancia segura con el vehículo de adelante para poder reaccionar ante cualquier imprevisto."
-    },
-    {
-      "patterns": ["anticipar peligros", "prevenir accidentes", "riesgos en carretera", "reacción conductor"],
-      "answer": "Debes estar atento al entorno y anticipar posibles situaciones peligrosas como frenadas bruscas o peatones."
+      "patterns": ["distancia de seguridad", "espacio entre carros"],
+      "answer": "Debes mantener distancia para reaccionar ante imprevistos."
     }
   ],
   "seguridad": [
     {
-      "patterns": ["seguridad vial", "qué es seguridad vial", "importancia seguridad", "evitar accidentes"],
-      "answer": "La seguridad vial busca prevenir accidentes y proteger la vida de todos los usuarios de la vía mediante normas y buenas prácticas."
+      "patterns": ["seguridad vial", "importancia seguridad"],
+      "answer": "Busca prevenir accidentes y proteger vidas."
     },
     {
-      "patterns": ["conducir con alcohol", "manejar borracho", "alcohol y conducción", "riesgo alcohol"],
-      "answer": "Está prohibido conducir bajo los efectos del alcohol, ya que reduce la capacidad de reacción y aumenta el riesgo de accidentes."
-    },
-    {
-      "patterns": ["estado del vehículo", "revisión del carro", "mantenimiento vehículo", "seguridad mecánica"],
-      "answer": "Es importante mantener el vehículo en buen estado mecánico, revisando frenos, luces y llantas regularmente."
+      "patterns": ["conducir con alcohol", "manejar borracho"],
+      "answer": "Está prohibido y es muy peligroso."
     }
   ]
 }
 
 stopwords = [
-    "a", "al", "algo", "como", "con", "de", "del", "el", "ella",
-    "en", "entre", "era", "es", "esta", "este", "ha", "la",
-    "las", "lo", "los", "más", "me", "mi", "no", "nos", "o",
-    "para", "pero", "por", "que", "se", "sin", "sobre",
-    "su", "sus", "un", "una", "y"
+    "a","al","como","con","de","del","el","en","la","las","lo","los",
+    "para","por","que","se","un","una","y"
 ]
 
 def limpiar_texto(texto):
     texto = texto.lower()
 
-    # quitar tildes
     texto = ''.join(
         c for c in unicodedata.normalize('NFD', texto)
         if unicodedata.category(c) != 'Mn'
     )
 
-    # eliminar signos
     for signo in string.punctuation:
         texto = texto.replace(signo, "")
 
     palabras = texto.split()
 
-    # quitar stopwords
     resultado = []
     for palabra in palabras:
         if palabra not in stopwords:
             resultado.append(palabra)
 
     return resultado
-
 
 def similitud(frase_usuario, pattern):
     tokens_usuario = limpiar_texto(frase_usuario)
@@ -130,9 +116,6 @@ def similitud(frase_usuario, pattern):
             coincidencias += 1
 
     return coincidencias
-
-
-# busca respuesta
 
 def obtener_respuesta(mensaje):
     mejor_score = 0
@@ -154,18 +137,18 @@ def responder(mensaje):
     respuesta, score = obtener_respuesta(mensaje)
 
     if respuesta and score > 0:
-        return f"🐝 ¡Muy bien! {respuesta} 🚗✨ ¡Sigue así, lo estás haciendo genial!"
+        return f"🐝 ¡Muy bien! {respuesta} 🚗✨"
     else:
-        return "🐝 Ups... creo que no entendí muy bien 🤔 ¿Puedes decirlo con otras palabras? ¡Estoy aquí para ayudarte! 💛"
+        return "🐝 No entendí muy bien 🤔 intenta otra pregunta 💛"
 
-# -------------------------------
-# CHAT PRINCIPAL
-# -------------------------------
+
+print("🐝 ¡Hola! Soy Caspi 🚦 Aprende conmigo sobre educación vial")
+
 while True:
-    textobase = input("🐝 ¡Hola! Soy Caspi 🚦 ¿Qué quieres aprender? \nTú: ")
+    textobase = input("\nTú: ")
 
     if textobase.lower() in ["salir", "exit"]:
-        print("🐝 ¡Gracias por aprender conmigo! 🚗✨ ¡Hasta pronto!")
+        print("🐝 ¡Hasta pronto! 🚗✨")
         break
 
- 
+    print("Caspi:", responder(textobase))
